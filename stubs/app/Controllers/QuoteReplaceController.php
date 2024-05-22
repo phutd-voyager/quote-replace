@@ -24,8 +24,8 @@ class QuoteReplaceController extends Controller
         $text = $request->input('quote-replace-text');
         $quoteReplaceText = $this->quoteReplaceService->replaceFullWidthQuotes($text);
 
-        return redirect()->back()
-            ->success('Quote replaced successfully!')
-            ->with('quoteReplaceText', $quoteReplaceText);
+        session()->flash('quoteReplaceText', $quoteReplaceText);
+
+        return redirect()->back()->with('success', 'Quote replaced successfully!');
     }
 }

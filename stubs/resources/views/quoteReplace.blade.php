@@ -30,5 +30,5 @@
 <br>
 
 <div>
-    {{ $quoteReplaceText }}
+    {{ $quoteReplaceText ?? '' }}
 </div>
