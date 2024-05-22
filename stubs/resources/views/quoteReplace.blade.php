@@ -30,5 +30,5 @@
 <br>
 
 <div>
-    {{ $quoteReplaceText ?? '' }}
+    {{ session('quoteReplaceText') ? session('quoteReplaceText') : '' }}
 </div>
