@@ -30,8 +30,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             return new \VoyagerInc\QuoteReplace\Services\ConfigDataService();
         });
 
-        $this->app->bind(\VoyagerInc\QuoteReplace\Contracts\QuoteReplaceServiceInterface::class, function () {
-            return new \VoyagerInc\QuoteReplace\Services\QuoteReplaceService(new \VoyagerInc\QuoteReplace\Contracts\ConfigDataServiceInterface());
+        $this->app->bind(\VoyagerInc\QuoteReplace\Contracts\QuoteReplaceServiceInterface::class, function ($app) {
+            return new \VoyagerInc\QuoteReplace\Services\QuoteReplaceService($app->make(\VoyagerInc\QuoteReplace\Contracts\ConfigDataServiceInterface::class));
         });
     }
 }
