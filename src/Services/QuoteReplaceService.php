@@ -20,10 +20,13 @@ class QuoteReplaceService implements QuoteReplaceServiceInterface
             return $text;
         }
 
-        return str_replace(
-            $this->configDataService->getFullWidthQuotes(),
-            $this->configDataService->getHalfWidthQuote(),
-            $text
-        );
+        $fullWidthQuotes = $this->configDataService->getFullWidthQuotes();
+        $halfWidthQuote = $this->configDataService->getHalfWidthQuote();
+
+        if (empty($fullWidthQuotes) || !is_string($halfWidthQuote)) {
+            return $text;
+        }
+
+        return str_replace($fullWidthQuotes, $halfWidthQuote, $text);
     }
 }
