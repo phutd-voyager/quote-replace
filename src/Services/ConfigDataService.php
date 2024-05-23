@@ -9,7 +9,13 @@ class ConfigDataService implements ConfigDataServiceInterface
 {
     public function getStatusPackage(): bool
     {
-        return config('quote_replace.enabled', ConfigConstant::ENABLED_DEFAULT);
+        $config = config('quote_replace.enabled', ConfigConstant::ENABLED_DEFAULT);
+
+        if ($config === null) {
+            return ConfigConstant::ENABLED_DEFAULT;
+        }
+
+        return $config;
     }
 
     public function getFullWidthQuotes(): array
